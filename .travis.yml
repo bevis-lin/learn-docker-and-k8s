@@ -6,3 +6,13 @@ before_install:
   - docker build -t bevislin/docker-react -f Dockerfile.dev .
 script:
   - docker run -e CI=true bevislin/docker-react npm run test
+deploy:
+  provider: elasticbeanstalk
+  access_key_id:
+    secure: "Encrypted <access-key-id>=AKIAQE42NQLVEELRIT6E"
+  secret_access_key:
+    secure: "Encypted <secret-access-key>=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"
+  region: "ap-northeast-1"
+  app: "docker"
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-ap-northeast-1-010524394218"
