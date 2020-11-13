@@ -8,9 +8,14 @@ script:
   - docker run -e CI=true bevislin/docker-react npm run test
 deploy:
   provider: elasticbeanstalk
-  access_key_id: "AKIAQE42NQLVEELRIT6E"
-  secret_access_key: "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"
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRECT_KEY"
   region: "ap-northeast-1"
   app: "docker"
   env: "Docker-env-1"
   bucket_name: "elasticbeanstalk-ap-northeast-1-010524394218"
+  bucket_path: "docker"
+  on:
+    branch: master
+  
